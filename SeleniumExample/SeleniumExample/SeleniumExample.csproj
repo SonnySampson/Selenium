@@ -77,6 +77,7 @@
     <Compile Include="PageObjects\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers\FileIO.cs" />
+    <Compile Include="TestHelpers\WebDriverFactory.cs" />
     <Compile Include="Tests\AutomationPracticeTests\LoginPageTests.cs" />
     <Compile Include="Tests\ITest.cs" />
   </ItemGroup>

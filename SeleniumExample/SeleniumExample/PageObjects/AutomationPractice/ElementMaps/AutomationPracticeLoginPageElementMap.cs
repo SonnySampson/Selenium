@@ -35,5 +35,21 @@ namespace SeleniumExample.PageObjects.AutomationPractice.ElementMaps
                 return _browser.FindElement(By.Id("SubmitLogin"));
             }
         }
+
+        public IWebElement LoginErrorMessageTitle
+        {
+            get
+            {
+                return _browser.FindElement(By.XPath("//div[@class='alert alert-danger']//p"));
+            }
+        }
+
+        public IWebElement LoginErrorMessageContent
+        {
+            get
+            {
+                return _browser.FindElement(By.XPath("//div[@class='alert alert-danger']//ol//li"));
+            }
+        }
     }
 }

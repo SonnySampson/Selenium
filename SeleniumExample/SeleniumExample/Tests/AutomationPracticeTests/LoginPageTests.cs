@@ -18,6 +18,7 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
     {
         public IWebDriver Browser { get; set; }
         public WebDriverWait Wait { get; set; }
+        public WebDriverFactory webDriverFactory = new WebDriverFactory();
         public const string loginParamsFilePath = @"C:\LoginVariables.txt";
         private static List<string[]> data;
         public static ILog logger = LogManager.GetLogger(typeof(AutomationPracticeLoginPageTests));
@@ -35,18 +36,16 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
             if (data == null)
                 logger.Error(string.Format("The data file '{0}' was not found! " + 
                     "Please add a text file with vairbles formatted with email@address.com,password format", loginParamsFilePath));
+
+            
         }
 
         [TestMethod]
         public void PositiveFireFoxLogin()
         {
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"C:\"); 
-            service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-            this.Browser = new FirefoxDriver(service);
-            this.Browser.Manage().Window.Maximize();
+            Browser = webDriverFactory.GetDriver(WebDriverFactoryType.FireFox);
             Wait = new WebDriverWait(this.Browser, TimeSpan.FromSeconds(30));
             Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-
             AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser);
             AutomationPracticeLoginPage loginPage;
             headerPage.Navigate();
@@ -55,6 +54,20 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
             headerPage.Validate().LoginName("Test Test");
         }
         
+        [TestMethod]
+        public void NegativeFireFoxLogin()
+        {
+            Browser = webDriverFactory.GetDriver(WebDriverFactoryType.FireFox);
+            Wait = new WebDriverWait(this.Browser, TimeSpan.FromSeconds(30));
+            Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser);
+            AutomationPracticeLoginPage loginPage;
+            headerPage.Navigate();
+            loginPage = headerPage.GotoLoginPage();
+            loginPage.Login("wrong@wrong.com", "worng");
+            loginPage.Validate().LoginErrorMessage("There is 1 error", "Authentication failed.");
+        }
+
 
         [TestCleanup]
         public void TeardownTest()
