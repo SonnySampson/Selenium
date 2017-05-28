@@ -11,25 +11,12 @@ namespace SeleniumExample.PageObjects
     /// </summary>
     /// <typeparam name="T">A class that implements the IElementMap interface.</typeparam>
     /// <typeparam name="U">A class that implements the IValidator interface.</typeparam>
-    public interface IPageObject<T, U>
+    public interface IPageObject<T, U> : IComponent<T, U>
     {
         /// <summary>
         /// Used to navigate the PageObject's URL.
         /// </summary>
         void Navigate();
         
-        /// <summary>
-        ///Gets the PageObject's elements that a user can interact with.  
-        /// </summary>
-        T Map
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Used to get the PageObject's IValidator object, which is used to verify a PageObject's elements.
-        /// </summary>
-        /// <returns>An instance of the PageObject's object that implments the IValidator interface.</returns>
-        U Validate();
     }
 }

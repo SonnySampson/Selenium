@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Firefox;
 using SeleniumExample.PageObjects.AutomationPractice.PageObjects;
 using SeleniumExample.TestHelpers;
+using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using log4net;
@@ -41,12 +42,12 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
         }
 
         [TestMethod]
-        public void PositiveFireFoxLogin()
+        public void PositiveLogin()
         {
             Browser = webDriverFactory.GetDriver(WebDriverFactoryType.FireFox);
             Wait = new WebDriverWait(this.Browser, TimeSpan.FromSeconds(30));
             Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser);
+            AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser); 
             AutomationPracticeLoginPage loginPage;
             headerPage.Navigate();
             loginPage = headerPage.GotoLoginPage();
@@ -55,24 +56,26 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
         }
         
         [TestMethod]
-        public void NegativeFireFoxLogin()
+        [TestCase(WebDriverFactoryType.FireFox)]
+        [TestCase(WebDriverFactoryType.Chrome)]
+        [TestCase(WebDriverFactoryType.IE)]
+        public void NegativeLogin(object webDriverType)
         {
-            Browser = webDriverFactory.GetDriver(WebDriverFactoryType.FireFox);
-            Wait = new WebDriverWait(this.Browser, TimeSpan.FromSeconds(30));
-            Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            Browser = webDriverFactory.GetDriver(webDriverType);
             AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser);
             AutomationPracticeLoginPage loginPage;
             headerPage.Navigate();
             loginPage = headerPage.GotoLoginPage();
             loginPage.Login("wrong@wrong.com", "worng");
             loginPage.Validate().LoginErrorMessage("There is 1 error", "Authentication failed.");
+            Browser.Quit();
         }
 
 
         [TestCleanup]
         public void TeardownTest()
         {
-            Browser.Quit();
+            
             Browser.Dispose();
         }
     }

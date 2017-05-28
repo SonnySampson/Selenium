@@ -17,7 +17,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <NuGetPackageImportStamp>37933dfe</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>2f40ac57</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,12 +66,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingItemElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingSideBarPageElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingPageElementMap.cs" />
     <Compile Include="PageObjects\AutomationPractice\ElementMaps\AutomationPracticeLoginPageElementMap.cs" />
     <Compile Include="PageObjects\AutomationPractice\ElementMaps\AutomationPracticeHeaderPageElementMap.cs" />
     <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeHeaderPage.cs" />
     <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeLoginPage.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\AutomationPracticeShoppingPage.cs" />
     <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeHeaderPageValidator.cs" />
     <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeLoginPageValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\AutomationPracticeShoppingPageValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\AutomationPracticeShoppingPageItemValidator.cs" />
+    <Compile Include="PageObjects\IComponent.cs" />
     <Compile Include="PageObjects\IElementMap.cs" />
     <Compile Include="PageObjects\IPageObject.cs" />
     <Compile Include="PageObjects\IValidator.cs" />
@@ -110,7 +117,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.8.0-alpha1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.8.0-alpha1\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.IEDriver.3.4.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.IEDriver.3.4.0\build\Selenium.WebDriver.IEDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.29\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.29\build\Selenium.Chrome.WebDriver.targets'))" />
   </Target>
+  <Import Project="..\packages\Selenium.WebDriver.IEDriver.3.4.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.IEDriver.3.4.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.29\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.29\build\Selenium.Chrome.WebDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

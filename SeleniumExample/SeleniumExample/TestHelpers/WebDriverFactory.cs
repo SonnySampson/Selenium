@@ -18,28 +18,50 @@ namespace SeleniumExample.TestHelpers
     {
         private IWebDriver _browser;
 
-        public IWebDriver GetDriver(WebDriverFactoryType webDriverType)
+        public IWebDriver GetDriver(object webDriverType)
         {
-            switch (webDriverType)
+            if (webDriverType is string)
+                webDriverType = (WebDriverFactoryType) Enum.Parse(typeof(WebDriverFactoryType), (string)webDriverType);
+
+            switch ((WebDriverFactoryType)webDriverType)
             {
                 case WebDriverFactoryType.FireFox:
-                    return FireFoxWebDriverBuilder();
+                    FireFoxWebDriverBuilder();
+                    break;
                 case WebDriverFactoryType.Chrome:
+                    ChromeWebDriverBuilder();
+                    break;
                 case WebDriverFactoryType.IE:
-                    throw new NotImplementedException(string.Format("WebDriverType '{0}' has not been implemented", webDriverType));
+                    IEWebDriverBuilder();
+                    break;
                 default:
                     throw new ApplicationException(string.Format("WebDriverType '{0}' cannot be created", webDriverType));
             }
+            SetDefaultSettings();
+            return this._browser;
         }
 
-        private IWebDriver FireFoxWebDriverBuilder()
+        private void FireFoxWebDriverBuilder()
         {
             FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"C:\");
             service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
             this._browser = new FirefoxDriver(service);
-            this._browser.Manage().Window.Maximize();
-            return this._browser;
             
+        }
+
+        private void IEWebDriverBuilder()
+        {
+            this._browser = new InternetExplorerDriver();
+        }
+
+        private void ChromeWebDriverBuilder()
+        {
+            this._browser = new ChromeDriver();
+        }
+        private void SetDefaultSettings()
+        {
+            this._browser.Manage().Window.Maximize();
+            this._browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
     }
 }
