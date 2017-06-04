@@ -1,2 +1,2 @@
 # Selenium
-Used to practise and display my work with selenium
+Used to practice and display my work with selenium
