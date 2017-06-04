@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SeleniumExample.PageObjects
 {
-    interface IComponent<T, U>
+    public interface IComponent<T, U>
     {
         /// <summary>
         ///Gets the PageObject's elements that a user can interact with.  

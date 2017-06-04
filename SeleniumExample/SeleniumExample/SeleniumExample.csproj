@@ -74,6 +74,7 @@
     <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeHeaderPage.cs" />
     <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeLoginPage.cs" />
     <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\AutomationPracticeShoppingPage.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\AutomationPracticeShoppingPageItem.cs" />
     <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeHeaderPageValidator.cs" />
     <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeLoginPageValidator.cs" />
     <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\AutomationPracticeShoppingPageValidator.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="TestHelpers\FileIO.cs" />
     <Compile Include="TestHelpers\WebDriverFactory.cs" />
     <Compile Include="Tests\AutomationPracticeTests\LoginPageTests.cs" />
+    <Compile Include="Tests\AutomationPracticeTests\ShoppingPageTests.cs" />
     <Compile Include="Tests\ITest.cs" />
   </ItemGroup>
   <ItemGroup>

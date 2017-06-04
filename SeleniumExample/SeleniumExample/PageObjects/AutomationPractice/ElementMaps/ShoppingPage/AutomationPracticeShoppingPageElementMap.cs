@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 
 namespace SeleniumExample.PageObjects.AutomationPractice.ElementMaps
@@ -36,9 +38,9 @@ namespace SeleniumExample.PageObjects.AutomationPractice.ElementMaps
             get { return _browser.FindElement(By.ClassName("product-count")); }
         }
 
-        public IWebElement ItemContainer
+        public ReadOnlyCollection<IWebElement> ShoppingItems
         {
-            get { return _browser.FindElement(By.ClassName("product_list grid row"));}
+            get { return _browser.FindElements(By.XPath(".//ul[@class='product_list grid row']/li"));}
         }
 
     }

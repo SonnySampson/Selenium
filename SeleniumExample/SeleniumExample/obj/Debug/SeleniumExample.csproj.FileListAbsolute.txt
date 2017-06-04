@@ -17,4 +17,3 @@ C:\Users\ssampson\Selenium\SeleniumExample\SeleniumExample\bin\Debug\Mono.Cecil.
 C:\Users\ssampson\Selenium\SeleniumExample\SeleniumExample\bin\Debug\Mono.Cecil.Pdb.dll
 C:\Users\ssampson\Selenium\SeleniumExample\SeleniumExample\bin\Debug\Mono.Cecil.Mdb.dll
 C:\Users\ssampson\Selenium\SeleniumExample\SeleniumExample\bin\Debug\Mono.Cecil.Rocks.dll
-C:\Users\ssampson\Selenium\SeleniumExample\SeleniumExample\obj\Debug\SeleniumExample.csprojResolveAssemblyReference.cache
