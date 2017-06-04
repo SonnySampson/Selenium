@@ -17,7 +17,7 @@ using log4net.Config;
 namespace SeleniumExample.Tests.AutomationPracticeTests
 {
     [TestClass]
-    class ShoppingPageTests
+    class ShoppingPageTests : ITest
     {  
         public IWebDriver Browser { get; set; }
         public WebDriverWait Wait { get; set; }
@@ -37,7 +37,7 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
         public void NumberOfItems(object webDriverType, ShoppingPageURL url, int startingItem, int endingItem, int totalItems, int shoppingItems)
         {
             Browser = webDriverFactory.GetDriver(webDriverType);
-            AutomationPracticeShoppingPage shoppingPage = new AutomationPracticeShoppingPage(Browser);
+            ShoppingPage shoppingPage = new ShoppingPage(Browser);
             shoppingPage.Navigate(url);
             shoppingPage.Validate().ShowingTitle(startingItem, endingItem, totalItems);
             shoppingPage.Validate().NumberOfShoppingItems(shoppingItems);
@@ -49,13 +49,24 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
         public void VerifyShoppingItem(object webDriverType, ShoppingPageURL url, int shoppingItemIndex, string shoppingItemName, double shoppingItemPrice)
         {
             Browser = webDriverFactory.GetDriver(webDriverType);
-            AutomationPracticeShoppingPage shoppingPage = new AutomationPracticeShoppingPage(Browser);
+            ShoppingPage shoppingPage = new ShoppingPage(Browser);
             shoppingPage.Navigate(url);
-            //TODO: Used to scroll to the shopping Item, make helper method
-            ((IJavaScriptExecutor)Browser).ExecuteScript("arguments[0].scrollIntoView(true);", 
-                shoppingPage.ShoppingItems[shoppingItemIndex].Map.ShoppingItem);
+            shoppingPage.ShoppingItems[shoppingItemIndex].ScrollToItem();
             shoppingPage.ShoppingItems[shoppingItemIndex].Validate().Name(shoppingItemName);
             shoppingPage.ShoppingItems[shoppingItemIndex].Validate().Price(shoppingItemPrice);
+            Browser.Quit();
+        }
+
+        [TestMethod]
+        [TestCase(WebDriverFactoryType.FireFox, ShoppingPageURL.Dresses, 3, "Product successfully added to your shopping cart")]
+        public void AddItemToCart(object webDriverType, ShoppingPageURL url, int shoppingItemIndex, string confirmationMessage)
+        {
+            Browser = webDriverFactory.GetDriver(webDriverType);
+            ShoppingPage shoppingPage = new ShoppingPage(Browser);
+            ShoppingCartConfirmation shoppingCartConfirmation = new ShoppingCartConfirmation(Browser);
+            shoppingPage.Navigate(url);
+            shoppingPage.ShoppingItems[shoppingItemIndex].AddItemToCart();
+            shoppingCartConfirmation.Validate().ConfirmationMessage(confirmationMessage);
             Browser.Quit();
         }
 

@@ -47,8 +47,8 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
             Browser = webDriverFactory.GetDriver(WebDriverFactoryType.FireFox);
             Wait = new WebDriverWait(this.Browser, TimeSpan.FromSeconds(30));
             Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser); 
-            AutomationPracticeLoginPage loginPage;
+            HeaderPage headerPage = new HeaderPage(this.Browser); 
+            LoginPage loginPage;
             headerPage.Navigate();
             loginPage = headerPage.GotoLoginPage();
             loginPage.Login(data[2][0], data[2][1]);
@@ -62,8 +62,8 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
         public void NegativeLogin(object webDriverType)
         {
             Browser = webDriverFactory.GetDriver(webDriverType);
-            AutomationPracticeHeaderPage headerPage = new AutomationPracticeHeaderPage(this.Browser);
-            AutomationPracticeLoginPage loginPage;
+            HeaderPage headerPage = new HeaderPage(this.Browser);
+            LoginPage loginPage;
             headerPage.Navigate();
             loginPage = headerPage.GotoLoginPage();
             loginPage.Login("wrong@wrong.com", "worng");

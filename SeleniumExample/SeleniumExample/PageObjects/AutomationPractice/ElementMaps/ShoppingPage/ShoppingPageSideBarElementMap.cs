@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumExample.PageObjects.AutomationPractice.ElementMaps
 {
-    class AutomationPracticeShoppingSideBarPageElementMap
+    class ShoppingPageSideBarElementMap
     {
     }
 }

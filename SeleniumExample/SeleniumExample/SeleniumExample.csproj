@@ -66,25 +66,29 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingItemElementMap.cs" />
-    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingSideBarPageElementMap.cs" />
-    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\AutomationPracticeShoppingPageElementMap.cs" />
-    <Compile Include="PageObjects\AutomationPractice\ElementMaps\AutomationPracticeLoginPageElementMap.cs" />
-    <Compile Include="PageObjects\AutomationPractice\ElementMaps\AutomationPracticeHeaderPageElementMap.cs" />
-    <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeHeaderPage.cs" />
-    <Compile Include="PageObjects\AutomationPractice\PageObjects\AutomationPracticeLoginPage.cs" />
-    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\AutomationPracticeShoppingPage.cs" />
-    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\AutomationPracticeShoppingPageItem.cs" />
-    <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeHeaderPageValidator.cs" />
-    <Compile Include="PageObjects\AutomationPractice\Validators\AutomationPracticeLoginPageValidator.cs" />
-    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\AutomationPracticeShoppingPageValidator.cs" />
-    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\AutomationPracticeShoppingPageItemValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingCart\ShoppingCartConfirmationElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\ShoppingPageItemElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\ShoppingPageSideBarElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\ShoppingPage\ShoppingPageElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\LoginPageElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\ElementMaps\HeaderPageElementMap.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\HeaderPage.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\LoginPage.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingCart\ShoppingCartConfirmation.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\ShoppingPage.cs" />
+    <Compile Include="PageObjects\AutomationPractice\PageObjects\ShoppingPage\ShoppingPageItem.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\HeaderPageValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\LoginPageValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingCart\ShoppingCartConfirmationValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\ShoppingPageValidator.cs" />
+    <Compile Include="PageObjects\AutomationPractice\Validators\ShoppingPage\ShoppingPageItemValidator.cs" />
     <Compile Include="PageObjects\IComponent.cs" />
     <Compile Include="PageObjects\IElementMap.cs" />
     <Compile Include="PageObjects\IPageObject.cs" />
     <Compile Include="PageObjects\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers\FileIO.cs" />
+    <Compile Include="TestHelpers\UiHelpers.cs" />
     <Compile Include="TestHelpers\WebDriverFactory.cs" />
     <Compile Include="Tests\AutomationPracticeTests\LoginPageTests.cs" />
     <Compile Include="Tests\AutomationPracticeTests\ShoppingPageTests.cs" />
