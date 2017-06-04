@@ -51,6 +51,7 @@ namespace SeleniumExample.Tests.AutomationPracticeTests
             Browser = webDriverFactory.GetDriver(webDriverType);
             AutomationPracticeShoppingPage shoppingPage = new AutomationPracticeShoppingPage(Browser);
             shoppingPage.Navigate(url);
+            //TODO: Used to scroll to the shopping Item, make helper method
             ((IJavaScriptExecutor)Browser).ExecuteScript("arguments[0].scrollIntoView(true);", 
                 shoppingPage.ShoppingItems[shoppingItemIndex].Map.ShoppingItem);
             shoppingPage.ShoppingItems[shoppingItemIndex].Validate().Name(shoppingItemName);
